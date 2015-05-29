@@ -1,0 +1,10 @@
+---
+
+# file: roles/ansible-owncloud_server/defaults/main.yaml
+
+owncloud_enable_service: yes
+owncloud_use_mysql: no
+
+owncloud_db_user: owncloud
+owncloud_db_password: secret_password_change_me
+

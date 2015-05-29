@@ -1,0 +1,19 @@
+---
+
+# file: roles/ansible-owncloud_server/tasks/owncloud.yml
+
+- name: ensure repository key is present
+  apt_key:
+    url: '{{ owncloud_key_url }}'
+    state: present
+
+- name: ensure we have the official repository
+  apt_repository:
+    repo: '{{ owncloud_repo }}'
+    update_cache: True
+    state: present
+
+- name: ensure owncloud package is installed
+  apt:
+    pkg: 'owncloud'
+    state: installed

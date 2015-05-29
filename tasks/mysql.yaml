@@ -1,0 +1,32 @@
+---
+
+# file: roles/ansible-owncloud_server/tasks/mysql.yaml
+
+- name: ensure python-mysqldb package is installed
+  apt:
+    pkg: 'python-mysqldb'
+    state: installed
+
+- name: ensure mysql package is installed
+  apt:
+    pkg: 'owncloud'
+    state: installed
+  when: owncloud_use_mysql
+
+- name: ensure mysql is running
+  service:
+    name: 'mysql'
+    state: running
+    enabled: yes
+
+- name: ensure owncloud mysql database exists
+  mysql_db:
+    name: 'owncloud'
+    state: present
+
+- name: ensure owncloud mysql user exists
+  mysql_user:
+    name: '{{ owncloud_db_user }}'
+    password: '{{ owncloud_db_password }}'
+    priv: 'owncloud.*:ALL'
+    state: present

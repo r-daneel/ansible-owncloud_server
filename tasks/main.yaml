@@ -1,0 +1,11 @@
+---
+
+# file: roles/ansible-owncloud_server/tasks/main.yml
+
+- include: mysql.yaml tags=owncloud,mysql
+  when: owncloud_use_mysql
+
+- include: apache.yaml tags=owncloud,apache
+
+- include: owncloud.yaml tags=owncloud
+

@@ -1,0 +1,17 @@
+---
+
+# file: roles/ansible-owncloud_server/tasks/apache.yaml
+
+- name: ensure apache2 is running
+  service:
+    name: 'apache2'
+    state: running
+    enabled: yes
+  when: owncloud_enable_service
+
+- name: ensure apache2 is stopped
+  service:
+    name: 'apache2'
+    state: stopped
+    enabled: no
+  when: not owncloud_enable_service

@@ -1,0 +1,18 @@
+---
+
+# file: roles/ansible-owncloud_server/handlers/mysql.yaml
+
+- name: stop mysql
+  service:
+    name: mysql
+    state: stopped
+
+- name: start mysql
+  service:
+    name: mysql
+    state: running
+
+- name: restart mysql
+  service:
+    name: mysql
+    state: restarted

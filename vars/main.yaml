@@ -1,0 +1,6 @@
+---
+
+# file: roles/ansible-owncloud_server/vars/main.yaml
+
+owncloud_repo: "deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.04/ /"
+owncloud_key_url: "http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key"
